@@ -1,7 +1,6 @@
 ---
 title: "International Migrant Stocks 1990-2020"
-output: 
- github_document
+output: github_document
 ---
 
 ```{r setup, include=FALSE}
