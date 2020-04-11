@@ -1,0 +1,106 @@
+---
+title: "International Migrant Stocks 1990-2020"
+output:
+  html_document: default
+  pdf_document: default
+  word_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+```{r unfpa, include=FALSE}
+library(tidyverse)
+getwd()
+load("rda/unfpa.rda")
+dim(data)
+str(data)
+summary(data)
+```
+
+### Overall
+
+
+```{r 1, echo=FALSE}
+data %>% 
+  mutate(Stock=Stock/1000000) %>% 
+  filter(Area=="Africa" | Area=="Asia"| Area=="Europe"| Area=="Latin America and the Caribbean"| Area=="Northern America"| Area=="Oceania") %>% 
+  mutate(Area=recode(Area,'Latin America and the Caribbean'="Latin America")) %>% 
+  mutate(Area=reorder(Area, -Stock)) %>% 
+  ggplot(aes(x=Year, y=Stock, color=Area))+ 
+  geom_point()+
+  geom_line()+
+  scale_y_continuous(breaks = seq(0, 100, by = 10))+
+  scale_x_continuous(breaks = seq(0, 2020, by = 5))+
+  theme_bw()+
+  ylab("Migrant Stock (millions)")+
+  theme(axis.title.x = element_text(vjust=-1))+
+  theme(axis.title.y = element_text(vjust=2.5))+
+  theme(legend.title = element_blank())
+```
+
+### Overall (cummulative)
+
+
+```{r 2, echo=FALSE}
+data %>% 
+  mutate(Stock=Stock/1000000) %>% 
+  filter(Area=="Africa" | Area=="Asia"| Area=="Europe"| Area=="Latin America and the Caribbean"| Area=="Northern America"| Area=="Oceania") %>% 
+  mutate(Area=recode(Area,'Latin America and the Caribbean'="Latin America")) %>% 
+  mutate(Area=reorder(Area, -Stock)) %>% 
+  ggplot(aes(x=Year, y=Stock, fill=Area))+ 
+  geom_area() +
+  scale_y_continuous(breaks = seq(0, 300, by = 20))+
+  scale_x_continuous(breaks = seq(0, 2020, by = 5))+
+  theme_bw()+
+  ylab("Migrant Stock (millions)")+
+  theme(axis.title.x = element_text(vjust=-1))+
+  theme(axis.title.y = element_text(vjust=2.5))+
+  theme(legend.title = element_blank())
+```
+
+
+### Select European Countries
+
+```{r 3, echo=FALSE}
+data %>% 
+  mutate(Stock=Stock/1000000) %>% 
+  filter(Area=="Finland" | Area=="Iceland"| Area=="Ireland"| Area=="Norway"| Area=="Sweden"| Area=="United Kingdom"| Area=="Greece"| Area=="Italy"| Area=="Portugal"| Area=="Spain"| Area=="Austria"| Area=="Belgium"| Area=="France"| Area=="Germany"| Area=="Netherlands"| Area=="Switzerland") %>% 
+  mutate(Area=reorder(Area, -Stock)) %>% 
+  ggplot(aes(x=Year, y=Stock, color=Area))+ 
+  geom_point()+
+  geom_line()+
+  scale_y_continuous(breaks = seq(0, 20, by = 1))+
+  scale_x_continuous(breaks = seq(0, 2020, by = 5))+
+  theme_bw()+
+  ylab("Migrant Stock (millions)")+
+  theme(axis.title.x = element_text(vjust=-1))+
+  theme(axis.title.y = element_text(vjust=2.5))+
+  theme(legend.title = element_blank())
+
+```
+
+### Select European Countries (cummulative)
+
+```{r 4, echo=FALSE}
+data %>% 
+  mutate(Stock=Stock/1000000) %>% 
+  filter(Area=="Finland" | Area=="Iceland"| Area=="Ireland"| Area=="Norway"| Area=="Sweden"| Area=="United Kingdom"| Area=="Greece"| Area=="Italy"| Area=="Portugal"| Area=="Spain"| Area=="Austria"| Area=="Belgium"| Area=="France"| Area=="Germany"| Area=="Netherlands"| Area=="Switzerland") %>% 
+  mutate(Area=reorder(Area, -Stock)) %>% 
+  ggplot(aes(x=Year, y=Stock, fill=Area))+ 
+  geom_area()+
+  scale_y_continuous(breaks = seq(0, 80, by = 5))+
+  scale_x_continuous(breaks = seq(0, 2020, by = 5))+
+  theme_bw()+
+  ylab("Migrant Stock (millions)")+
+  theme(axis.title.x = element_text(vjust=-1))+
+  theme(axis.title.y = element_text(vjust=2.5))+
+  theme(legend.title = element_blank())
+
+```
+
+Source: United Nations, Department of Economic and Social Affairs. Population Division (2019). International Migrant Stock 2019 (United Nations database, POP/DB/MIG/Stock/Rev.2019), https://www.un.org/en/development/desa/population/migration/data/estimates2/estimates19.asp
+
