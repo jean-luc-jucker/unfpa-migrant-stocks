@@ -94,6 +94,27 @@ africa %>%
   theme(axis.title.x = element_text(vjust=-1))+
   labs(fill = "Stock (millions)")
 
+
+
+#asia
+asia <- data %>% 
+  slice(c(718:752, 760:822, 837:885, 893:969))%>% 
+  mutate(Area = recode(Area, 'Iran (Islamic Republic of)'='Iran', 'China, Hong Kong SAR'='Hong Kong'))
+asia %>% 
+  mutate(Stock=Stock/1000000) %>% 
+  filter(Stock > 1.8) %>% 
+  mutate(Area=reorder(Area, Stock)) %>% 
+  ggplot(aes(as.factor(Year), Area, fill=Stock))+
+  geom_tile()+ 
+  scale_fill_gradientn(colors = RColorBrewer::brewer.pal(3, "Greens"))+
+  theme_bw()+
+  theme(panel.grid = element_blank())+
+  ylab("Country")+xlab("Year")+
+  theme(axis.title.x = element_text(vjust=-1))+
+  labs(fill = "Stock (millions)")
+
+
+
 #europe
 europe <- data %>% 
   slice(c(1543:1612, 1620:1710, 1718:1825, 1833:1895)) %>% 
@@ -128,8 +149,11 @@ world %>%
   geom_col()+
   theme_bw()+
   theme(legend.position = "none")+
-  scale_y_continuous(breaks = seq(0, 60, by = 2))+
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  scale_y_continuous(breaks = seq(0, 60, by = 3))+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))+
+  ylab("Stock (millions)")+xlab("Country")+
+  theme(axis.title.y = element_text(vjust=2))
+  
 
 #version 2
 world %>% 
@@ -141,7 +165,9 @@ world %>%
   theme_bw()+
   theme(legend.position = "none")+
   scale_y_continuous(breaks = seq(0, 60, by = 2))+
-  coord_flip()
+  coord_flip()+
+  ylab("Stock (millions)")+xlab("Country")+
+  theme(axis.title.x = element_text(vjust=-1))
 
 
 
