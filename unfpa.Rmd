@@ -39,7 +39,7 @@ data %>%
   theme(legend.title = element_blank())
 ```
 
-### Overall (cummulative)
+### Overall (cumulative)
 
 
 ```{r 2, echo=FALSE}
@@ -80,7 +80,7 @@ data %>%
 
 ```
 
-### Select European Countries (cummulative)
+### Select European Countries (cumulative)
 
 ```{r 4, echo=FALSE}
 data %>% 
