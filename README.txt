@@ -1,7 +1,7 @@
-I use data form the United Nations Population Fund (UNFPA) to visualize the evolution of international migrant stocks between 1990 and 2019.
+I use data from the United Nations Population Fund (UNFPA) to visualize the evolution of international migrant stocks between 1990 and 2019.
 
 What are international migrant stocks?
-Simply put, the number of migrant and refugees in a given country. More precisely, the number of people born in another country than the country in which they live.
+Simply put, the number of migrants and refugees in a given country. More precisely, the number of people born in a country other than that in which they live.
 
 Where do the data come from?
 The data were published by the United Nations Population Fund (UNFPA), here: https://www.un.org/en/development/desa/population/migration/data/estimates2/estimates19.asp, and were made available under a Creative Commons license CC BY 3.0 IGO: http://creativecommons.org/licenses/by/3.0/igo/. You can find a copy of it in the 'data' folder of this repo.
