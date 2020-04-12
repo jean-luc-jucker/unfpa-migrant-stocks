@@ -5,7 +5,7 @@ International Migrant Stocks 1990-2019
 
 ![](unfpa_files/figure-gfm/1-1.png)<!-- -->
 
-### Overall (cummulative)
+### Overall (cumulative)
 
 ![](unfpa_files/figure-gfm/2-1.png)<!-- -->
 
@@ -13,7 +13,7 @@ International Migrant Stocks 1990-2019
 
 ![](unfpa_files/figure-gfm/3-1.png)<!-- -->
 
-### Select European Countries (cummulative)
+### Select European Countries (cumulative)
 
 ![](unfpa_files/figure-gfm/4-1.png)<!-- -->
 
