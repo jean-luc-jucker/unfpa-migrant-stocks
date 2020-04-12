@@ -1,4 +1,4 @@
-International Migrant Stocks 1990-2020
+International Migrant Stocks 1990-2019
 ================
 
 ### Overall
@@ -16,6 +16,14 @@ International Migrant Stocks 1990-2020
 ### Select European Countries (cummulative)
 
 ![](unfpa_files/figure-gfm/4-1.png)<!-- -->
+
+### Africa (top 10)
+
+![](unfpa_files/figure-gfm/5-1.png)<!-- -->
+
+### Europe (top 10)
+
+![](unfpa_files/figure-gfm/6-1.png)<!-- -->
 
 Source: United Nations, Department of Economic and Social Affairs.
 Population Division (2019). International Migrant Stock 2019 (United

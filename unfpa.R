@@ -17,3 +17,6 @@ data[c(1:2)] <- lapply(data[c(1:2)], as.factor)
 data[c(3:4)] <- lapply(data[c(3:4)], as.numeric)
 
 save(data, file = "rda/unfpa.rda") 
+
+#saving data in csv format too
+write.csv(data, "C:/Users/jeanl/projects/unfpa/rda/data.csv")

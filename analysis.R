@@ -4,6 +4,7 @@ load("rda/unfpa.rda")
 dim(data)
 str(data)
 summary(data)
+View(data)
 
 ####Visualisations########
 
@@ -76,13 +77,46 @@ data %>%
   theme(axis.title.y = element_text(vjust=2.5))+
   theme(legend.title = element_blank())
 
-#smaller selection (continental Europe)
-data %>% 
+#africa
+africa <- data %>% 
+  slice(c(134:269, 277:339, 347:381, 389:507, 522:570)) %>% 
+  mutate(Area = recode(Area, 'Democratic Republic of the Congo'='Congo', 'United Republic of Tanzania'='Tanzania'))
+africa %>% 
   mutate(Stock=Stock/1000000) %>% 
-  filter(Area=="Italy"| Area=="Portugal"| Area=="Spain"| Area=="Austria"| Area=="Belgium"| Area=="France"| Area=="Netherlands"| Area=="Switzerland") %>% 
-  ggplot(aes(x=Year, y=Stock, color=Area))+ 
-  geom_point()+
-  geom_line()
+  filter(Stock > 0.9) %>% 
+  mutate(Area=reorder(Area, Stock)) %>% 
+  ggplot(aes(as.factor(Year), Area, fill=Stock))+
+  geom_tile()+ 
+  scale_fill_gradientn(colors = RColorBrewer::brewer.pal(3, "Greens"))+
+  theme_bw()+
+  theme(panel.grid = element_blank())+
+  ylab("Country")+xlab("Year")+
+  theme(axis.title.x = element_text(vjust=-1))
 
-#last version
+#europe
+europe <- data %>% 
+  slice(c(1543:1612, 1620:1710, 1718:1825, 1833:1895)) %>% 
+  mutate(Area = recode(Area, 'United Kingdom'='UK'))
+
+europe %>% 
+  filter(Area!="Russian Federation") %>% 
+  mutate(Stock=Stock/1000000) %>% 
+  filter(Stock > 1.9) %>% 
+  mutate(Area=reorder(Area, Stock)) %>% 
+  ggplot(aes(as.factor(Year), Area, fill=Stock))+
+  geom_tile()+ 
+  scale_fill_gradientn(colors = RColorBrewer::brewer.pal(3, "Greens"))+
+  theme_bw()+
+  theme(panel.grid = element_blank())+
+  ylab("Country")+xlab("Year")+
+  theme(axis.title.x = element_text(vjust=-1))
+
+
+
+
+
+
+
+
+
 
