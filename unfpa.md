@@ -31,8 +31,6 @@ International Migrant Stocks 1990-2019
 
 ### World (2019, top 20)
 
-Only showing countries with stock higher than 1 million.
-
 ![](unfpa_files/figure-gfm/7-1.png)<!-- -->
 
 Source: United Nations, Department of Economic and Social Affairs.
