@@ -91,7 +91,8 @@ africa %>%
   theme_bw()+
   theme(panel.grid = element_blank())+
   ylab("Country")+xlab("Year")+
-  theme(axis.title.x = element_text(vjust=-1))
+  theme(axis.title.x = element_text(vjust=-1))+
+  labs(fill = "Stock (millions)")
 
 #europe
 europe <- data %>% 
@@ -109,12 +110,38 @@ europe %>%
   theme_bw()+
   theme(panel.grid = element_blank())+
   ylab("Country")+xlab("Year")+
-  theme(axis.title.x = element_text(vjust=-1))
+  theme(axis.title.x = element_text(vjust=-1))+
+  labs(fill = "Stock (millions)")
 
+#world--2019
+world <- data %>% 
+  filter(Year=="2019") %>% 
+  slice(c(-1:-19, -40, -50, -56, -74, -75, -83, -102, -103, -109, -119, -120, -128, -140, -141, -168, -177, -192, -193, -196, -202, -210, -220:-222, -233, -247, -264, -274)) %>% 
+  mutate(Area = recode(Area, 'Democratic Republic of the Congo'='Congo', 'United Republic of Tanzania'='Tanzania', 'United States of America'='USA', 'China, Hong Kong SAR' = 'Hong Kong', 'Iran (Islamic Republic of)'='Iran', 'Venezuela (Bolivarian Republic of)'='Venezuela', 'Republic of Korea'='South Korea', 'United Arab Emirates'='Emirates', 'Russian Federation'='Russia', 'United Kingdom' = 'UK'))
 
+#version 1
+world %>% 
+  mutate(Stock=Stock/1000000) %>% 
+  filter(Stock>3.2) %>% 
+  mutate(Area=reorder(Area, -Stock)) %>% 
+  ggplot(aes(x=Area, y=Stock, fill = Area))+
+  geom_col()+
+  theme_bw()+
+  theme(legend.position = "none")+
+  scale_y_continuous(breaks = seq(0, 60, by = 2))+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-
-
+#version 2
+world %>% 
+  mutate(Stock=Stock/1000000) %>% 
+  filter(Stock>3.2) %>% 
+  mutate(Area=reorder(Area, Stock)) %>% 
+  ggplot(aes(x=Area, y=Stock, fill = Area))+
+  geom_col()+
+  theme_bw()+
+  theme(legend.position = "none")+
+  scale_y_continuous(breaks = seq(0, 60, by = 2))+
+  coord_flip()
 
 
 

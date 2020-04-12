@@ -120,6 +120,28 @@ africa %>%
 
 ```
 
+### Asia (top 10)
+
+```{r 8, echo=FALSE}
+asia <- data %>% 
+  slice(c(718:752, 760:822, 837:885, 893:969))%>% 
+  mutate(Area = recode(Area, 'Iran (Islamic Republic of)'='Iran', 'China, Hong Kong SAR'='Hong Kong'))
+asia %>% 
+  mutate(Stock=Stock/1000000) %>% 
+  filter(Stock > 1.8) %>% 
+  mutate(Area=reorder(Area, Stock)) %>% 
+  ggplot(aes(as.factor(Year), Area, fill=Stock))+
+  geom_tile()+ 
+  scale_fill_gradientn(colors = RColorBrewer::brewer.pal(3, "Greens"))+
+  theme_bw()+
+  theme(panel.grid = element_blank())+
+  ylab("Country")+xlab("Year")+
+  theme(axis.title.x = element_text(vjust=-1))+
+  labs(fill = "Stock (millions)")
+
+```
+
+
 ### Europe (top 10)
 
 ```{r 6, echo=FALSE}
@@ -142,9 +164,30 @@ europe %>%
 
 ```
 
+### World (2019, top 20)
 
+Only showing countries with stock higher than 1 million.
 
+```{r 7, echo=FALSE}
+world <- data %>% 
+  filter(Year=="2019") %>% 
+  slice(c(-1:-19, -40, -50, -56, -74, -75, -83, -102, -103, -109, -119, -120, -128, -140, -141, -168, -177, -192, -193, -196, -202, -210, -220:-222, -233, -247, -264, -274)) %>% 
+  mutate(Area = recode(Area, 'Democratic Republic of the Congo'='Congo', 'United Republic of Tanzania'='Tanzania', 'United States of America'='USA', 'China, Hong Kong SAR' = 'Hong Kong', 'Iran (Islamic Republic of)'='Iran', 'Venezuela (Bolivarian Republic of)'='Venezuela', 'Republic of Korea'='South Korea', 'United Arab Emirates'='Emirates', 'Russian Federation'='Russia', 'United Kingdom' = 'UK'))
 
+world %>% 
+  mutate(Stock=Stock/1000000) %>% 
+  filter(Stock>3.2) %>% 
+  mutate(Area=reorder(Area, -Stock)) %>% 
+  ggplot(aes(x=Area, y=Stock, fill = Area))+
+  geom_col()+
+  theme_bw()+
+  theme(legend.position = "none")+
+  scale_y_continuous(breaks = seq(0, 60, by = 2))+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))+
+  ylab("Stock (millions)")+xlab("Country")+
+  theme(axis.title.y = element_text(vjust=2))
+
+```
 
 
 

@@ -1,21 +1,19 @@
-What's in this repo?
-Some visualisations on the evolution of international migrant stocks from 1990 to 2019.
+I use data form the United Nations Population Fund (UNFPA) to visualize the evolution of international migrant stocks between 1990 and 2019.
 
 What are international migrant stocks?
-The number of people born in another country than the country in which they live, including, for example, migrants and refugees.
+Simply put, the number of migrant and refugees in a given country. More precisely, the number of people born in another country than the country in which they live.
 
 Where do the data come from?
-The data were published by the United Nations Population Fund (UNFPA), here: https://www.un.org/en/development/desa/population/migration/data/estimates2/estimates19.asp, and were made available under a Creative Commons license CC BY 3.0 IGO: http://creativecommons.org/licenses/by/3.0/igo/. You can find a copy of it in the 'data' folder above.
+The data were published by the United Nations Population Fund (UNFPA), here: https://www.un.org/en/development/desa/population/migration/data/estimates2/estimates19.asp, and were made available under a Creative Commons license CC BY 3.0 IGO: http://creativecommons.org/licenses/by/3.0/igo/. You can find a copy of it in the 'data' folder of this repo.
 
-What's in each folder/file?
-I'd advise you start with 'unfpa.md', which contains all the visualisations.
+Contents
+I advise you first take a look at 'unfpa.md', which contains the visualizations. I you want to have a look at the code and data:
 -'data' contains the raw data
 -'rda' contains the clean data, both in rda. and csv. format
 -'unfpa.R' contains the code used to wrangle the data
 -'analysis.R' contains the code used to plot the data
 
-Is this a work in progress?
-Yes! I'm adding plots on a regular basis.
+This is a work in progress. I plan to add soon analyses with migrant stocks in percentage of total population, and also by sex.
 
 
 
