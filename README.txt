@@ -9,7 +9,7 @@ The data were published by the United Nations Population Fund (UNFPA), here: htt
 Contents
 I advise you first take a look at 'unfpa.md', which contains the visualizations. I you want to have a look at the code and data:
 -'data' contains the raw data
--'rda' contains the clean data, both in rda. and csv. format
+-'rda' contains the clean data, both in .rda and .csv format
 -'unfpa.R' contains the code used to wrangle the data
 -'analysis.R' contains the code used to plot the data
 
