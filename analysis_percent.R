@@ -76,7 +76,7 @@ data %>%
   theme(axis.title.y = element_text(vjust=2.5))+
   theme(legend.title = element_blank())
 
-#european countries (border countries)####
+#european countries (border countries)####NEW
 data %>% 
   filter(Area=="Italy"| Area=="Austria"| Area=="France"| Area=="Germany"| Area=="Switzerland") %>% 
   mutate(Area=reorder(Area, -Percent)) %>% 
@@ -183,33 +183,33 @@ world <- data %>%
   slice(c(-1:-19, -40, -50, -56, -74, -75, -83, -102, -103, -109, -119, -120, -128, -140, -141, -168, -177, -192, -193, -196, -202, -210, -220:-222, -233, -247, -264, -274)) %>% 
   mutate(Area = recode(Area, 'Democratic Republic of the Congo'='Congo', 'United Republic of Tanzania'='Tanzania', 'United States of America'='USA', 'China, Hong Kong SAR' = 'Hong Kong', 'Iran (Islamic Republic of)'='Iran', 'Venezuela (Bolivarian Republic of)'='Venezuela', 'Republic of Korea'='South Korea', 'United Arab Emirates'='Emirates', 'Russian Federation'='Russia', 'United Kingdom' = 'UK'))
 
-#version 1 UPDATED
+#version 1 UPDATED-first 50
 world %>% 
-  filter(Percent>25) %>% 
+  filter(Percent>19.9) %>%
   mutate(Area=reorder(Area, Percent)) %>% 
   ggplot(aes(x=Area, y=Percent, fill = Area))+
   geom_col()+
   theme_bw()+
   theme(legend.position = "none")+
   scale_y_continuous(breaks = seq(0, 100, by = 3))+
-  ylab("Percent")+xlab("Country")+
+  ylab("Percent of population")+xlab("Country")+
   theme(axis.title.y = element_text(vjust=2))+
+  theme(axis.title.x = element_text(vjust=-1))+
   coord_flip()
   
-  
-
-#version 2 UPDATED
+#version 1 UPDATED-last 50
 world %>% 
-  filter(Percent>25) %>% 
-  mutate(Area=reorder(Area, Percent)) %>% 
+  filter(Percent<1.4) %>%
+  mutate(Area=reorder(Area, -Percent)) %>% 
   ggplot(aes(x=Area, y=Percent, fill = Area))+
   geom_col()+
   theme_bw()+
   theme(legend.position = "none")+
-  scale_y_continuous(breaks = seq(0, 60, by = 2))+
-  coord_flip()+
-  ylab("Stock (millions)")+xlab("Country")+
-  theme(axis.title.x = element_text(vjust=-1))
+  scale_y_continuous(breaks = seq(0, 2, by = 0.1))+
+  ylab("Percent of population")+xlab("Country")+
+  theme(axis.title.y = element_text(vjust=2))+
+  theme(axis.title.x = element_text(vjust=-1))+
+  coord_flip()
 
 #world, stacked proportiona
 
