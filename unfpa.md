@@ -33,6 +33,18 @@ International Migrant Stocks 1990-2019
 
 ![](unfpa_files/figure-gfm/7-1.png)<!-- -->
 
+## In percent of population (Select European Countries)
+
+![](unfpa_files/figure-gfm/9-1.png)<!-- -->
+
+## In percent of population (2019, top 50)
+
+![](unfpa_files/figure-gfm/10-1.png)<!-- -->
+
+## In percent of population (2019, bottom 50)
+
+![](unfpa_files/figure-gfm/11-1.png)<!-- -->
+
 Source: United Nations, Department of Economic and Social Affairs.
 Population Division (2019). International Migrant Stock 2019 (United
 Nations database, POP/DB/MIG/Stock/Rev.2019)
